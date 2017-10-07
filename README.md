@@ -10,5 +10,5 @@ $eupago->setTransactionId('orderid');
 $result = $eupago->generateReferenceMB();
 
 // get information about reference
-$eupago->referenceInformation($result->referencia);
+$result = $eupago->referenceInformation($result->referencia);
 ```
