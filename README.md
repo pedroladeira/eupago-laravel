@@ -1,7 +1,7 @@
 # eupago-laravel-package
 This package helps to generate references to service "eupago.pt"
 
-<code>
+<!-- language: php -->
     $eupago = Eupago::getInstance();
     //required fields
     $eupago->setApiKey('demo-5b72-04a6-7847-5f6');
@@ -11,4 +11,3 @@ This package helps to generate references to service "eupago.pt"
 
     // get information about reference
     $eupago->referenceInformation($result->referencia);
-</code>
