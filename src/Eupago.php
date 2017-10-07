@@ -40,16 +40,25 @@ class Eupago
             'cache_wsdl' => WSDL_CACHE_NONE,
         ]);
     }
-    public function generateReferenceMB()
+    public function generateReferenceMB($value)
     {
         $params = [
-            'valor'           => 29.3,
-            'chave'           => $this->_apiKey,
-            'id'              => $this->_transactionId,
-            'testa_pagamento' => true
+            'valor' => $value,
+            'chave' => $this->_apiKey,
+            'id'    => $this->_transactionId
         ];
 
         $response = $this->getClient()->gerarReferenciaMB($params);
-        dd($response);
+        return $response;
+    }
+    public function informacaoReferencia($reference)
+    {
+        $params = [
+            'chave'      => $this->_apiKey,
+            'referencia' => $reference
+        ];
+
+        $response = $this->getClient()->gerarReferenciaMB($params);
+        return $response;
     }
 }
