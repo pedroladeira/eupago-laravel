@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "artisaninweb/laravel-soap": "0.3.0.7"
+    },
     "autoload": {
         "psr-4": {
             "PedroLadeira\\Eupago\\": "packages/pedroladeira/eupago-laravel-package/src"
