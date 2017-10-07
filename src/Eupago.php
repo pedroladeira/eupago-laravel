@@ -51,7 +51,7 @@ class Eupago
         $response = $this->getClient()->gerarReferenciaMB($params);
         return $response;
     }
-    public function informacaoReferencia($reference)
+    public function referenceInformation($reference)
     {
         $params = [
             'chave'      => $this->_apiKey,
