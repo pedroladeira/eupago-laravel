@@ -1,0 +1,19 @@
+{
+    "name": "pedroladeira/eupago-laravel-package",
+    "description": "Laravel package for eupago.pt service",
+    "type": "library",
+    "keywords": ["laravel"],
+    "authors": [
+        {
+            "name": "Pedro Ladeira",
+            "email": "pedr.ladeira@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PedroLadeira\\Eupago\\": "packages/pedroladeira/eupago-laravel-package/src"
+        }
+    }
+}
