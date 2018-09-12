@@ -4,18 +4,15 @@ namespace PedroLadeira\Eupago;
 
 use SoapClient;
 use SoapHeader;
-
 class Eupago
 {
-
     private static $_instance;
-
-    private $_wsdl = 'https://seguro.eupago.pt/eupagov8.wsdl';
+    private $_wsdl = 'https://replica.eupago.pt/replica.eupagov8.wsdl';
+    // private $_wsdl = 'https://seguro.eupago.pt/eupagov8.wsdl';
     private $_client = null;
     private $_apiKey = null;
     private $_currency = null;
     private $_transactionId = null;
-
     public static function getInstance()
     {
         if(!self::$_instance){
@@ -40,15 +37,28 @@ class Eupago
             'cache_wsdl' => WSDL_CACHE_NONE,
         ]);
     }
-    public function generateReferenceMB($value)
+    public function generateReferenceMB($value, $dateLimit = null)
+    {
+        $params = [
+            'valor'     => $value,
+            'chave'     => $this->_apiKey,
+            'id'        => $this->_transactionId,
+            'data_fim'  => $dateLimit,
+        ];
+        $response = $this->getClient()->gerarReferenciaMB($params);
+        return $response;
+    }
+    public function generateCC($value, $name, $email, $lang = 'pt')
     {
         $params = [
             'valor' => $value,
             'chave' => $this->_apiKey,
-            'id'    => $this->_transactionId
+            'id'    => $this->_transactionId,
+            'nome'    => $name,
+            'email'    => $email,
+            'lang'    => $lang,
         ];
-
-        $response = $this->getClient()->gerarReferenciaMB($params);
+        $response = $this->getClient()->PedidoCC($params);
         return $response;
     }
     public function referenceInformation($reference)
@@ -57,8 +67,7 @@ class Eupago
             'chave'      => $this->_apiKey,
             'referencia' => $reference
         ];
-
-        $response = $this->getClient()->gerarReferenciaMB($params);
+        $response = $this->getClient()->informacaoReferencia($params);
         return $response;
     }
 }

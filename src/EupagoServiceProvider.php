@@ -27,6 +27,6 @@ class EupagoServiceProvider extends ServiceProvider
             return new Eupago;
         });
 
-        $this->app->alias(Eupago::class, 'eupago-laravel-package');
+        $this->app->alias(Eupago::class, 'eupago-laravel');
     }
 }

@@ -11,9 +11,4 @@
     ],
     "minimum-stability": "dev",
     "require": {},
-    "autoload": {
-        "psr-4": {
-            "PedroLadeira\\Eupago\\": "packages/pedroladeira/eupago-laravel-package/src"
-        }
-    }
 }
