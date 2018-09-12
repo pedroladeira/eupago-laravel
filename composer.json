@@ -1,5 +1,5 @@
 {
-    "name": "pedroladeira/eupago-laravel-package",
+    "name": "pedroladeira/eupago-laravel",
     "description": "Laravel package for eupago.pt service",
     "type": "library",
     "keywords": ["laravel"],
