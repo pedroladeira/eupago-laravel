@@ -7,12 +7,14 @@ use SoapHeader;
 class Eupago
 {
     private static $_instance;
-    private $_wsdl = 'https://replica.eupago.pt/replica.eupagov8.wsdl';
-    // private $_wsdl = 'https://seguro.eupago.pt/eupagov8.wsdl';
+    private $_wsdlDev = 'https://replica.eupago.pt/replica.eupagov8.wsdl';
+    private $_wsdlProd = 'https://seguro.eupago.pt/eupagov8.wsdl';
+    private $_wsdl = null;
     private $_client = null;
     private $_apiKey = null;
     private $_currency = null;
     private $_transactionId = null;
+    private $_inSandbox = false;
     public static function getInstance()
     {
         if(!self::$_instance){
@@ -24,12 +26,18 @@ class Eupago
     {
         $this->_apiKey = $apikey;
     }
+    public function inDevelopment()
+    {
+        $this->_inSandbox = true;
+    }
     public function setTransactionId($transactionId)
     {
         $this->_transactionId = $transactionId;
     }
     private function getClient()
     {
+        $this->_wsdl = $this->_inSandbox ? $this->_wsdlDev : $this->_wsdlProd;
+        
         return $this->_client = new SoapClient($this->_wsdl, [
             'soap_version'   => SOAP_1_2,
             'style'    => SOAP_DOCUMENT,
