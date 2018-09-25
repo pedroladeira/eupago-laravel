@@ -23,7 +23,7 @@
         "laravel": {
             "providers": [
                 "PedroLadeira\\Eupago\\EupagoServiceProvider"
-            ],
+            ]
         }
-    },
+    }
 }
