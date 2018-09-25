@@ -10,5 +10,20 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PedroLadeira\\Eupago\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PedroLadeira\\Eupago\\EupagoServiceProvider"
+            ],
+        }
+    },
 }
